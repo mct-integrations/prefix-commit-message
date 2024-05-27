@@ -84,3 +84,18 @@ will only extract the identifier from branches that start with the string "featu
 
 The pattern for branches to include is specified via the '-bi' flag,
 and the pattern for branches to exclude is specified via the '-be' flag.
+
+## Custom branch match patterns
+You can specify custom branch match pattern,
+E.g.
+
+```
+#!/bin/sh
+npx prefix-commit-message $1 -br "/[^\/]*[\/]?[.]*?\/(([a-zA-Z0-9]*-)?[0-9]+).*/"
+```
+
+and
+
+```
+npx husky add .husky/prepare-commit-msg "npx prefix-commit-message \$1 -br "/[^\/]*[\/]?[.]*?\/(([a-zA-Z0-9]*-)?[0-9]+).*/"
+```
