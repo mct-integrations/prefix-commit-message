@@ -112,7 +112,7 @@ describe('prefix commit message hook', () => {
     // WEBPLT-10601 - follow dev/first.last/Ticket-NUMBER-title
     it('include branches not matching provided custom pattern', () => {
       simulateBranch(tmpDir, "dev/jack.jones/ABCD-1234-add-login-form");
-      execSync(`./${scriptFile} ${commitMessageFile} -br "[^\/]*[\/]?[.]*?\/(([a-zA-Z0-9]*-)?[0-9]+).*"`);
+      execSync(`./${scriptFile} ${commitMessageFile} -br "/[^\/]*[\/]?[.]*?\/(([a-zA-Z0-9]*-)?[0-9]+).*/"`);
       const actualCommitMessage = fs.readFileSync(path.join(tmpDir, commitMessageFile), 'utf-8');
       expect(actualCommitMessage).to.equal(`[ ABCD-1234 ] ${commitMessage}`);
     });
